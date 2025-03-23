@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    container_name: nestjs_app
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - '3001:3001'
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    command: ['yarn', 'start:dev']
+
+volumes:
+  pgdata:
